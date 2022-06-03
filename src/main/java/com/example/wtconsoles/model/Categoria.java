@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="tb_categoria")
 public class Categoria {
@@ -23,6 +25,7 @@ public class Categoria {
 	private String plataforma;
 	
 	@OneToMany(mappedBy="categoria",cascade=CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
 	private List<Produto> produtos;
 
 	public Long getId() {
